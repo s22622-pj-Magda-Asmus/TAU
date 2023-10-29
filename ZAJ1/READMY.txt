@@ -1,0 +1,2 @@
+Wykonać 10 testów jednostkowych,
+Wykorzystac 5 rodzajów asercji.

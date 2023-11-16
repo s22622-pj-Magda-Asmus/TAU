@@ -10,12 +10,12 @@ def add(a, b):
     # print(f"The sum of {num1} and {num2} is {num1 + num2}")
     return a+b
 1
-def subtract():
+def subtract(a, b):
     '''subtracts two numbers'''
-    num1 = int(input("Enter number 1: "))
-    num2 = int(input("Enter number 2: "))
-    print(f"The difference of {num1} and {num2} is {num1 - num2}")
-
+    # num1 = int(input("Enter number 1: "))
+    # num2 = int(input("Enter number 2: "))
+    # print(f"The difference of {num1} and {num2} is {num1 - num2}")
+    return a-b
 
 def multiply():
     '''multiplies two numbers'''

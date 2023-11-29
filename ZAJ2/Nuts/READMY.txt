@@ -1,0 +1,28 @@
+PLIK testowy wykonuje dwa niezalezne testy :
+
+1.TEST "test_addingToBasket" = Dodanie konkretnego produktu do koszyka
+        Dane wejściowe:
+        - Otwarcie przeglądarki internetowej
+
+        Kroki:
+        1. Otwarcie strony internetowej Treenuts.pl
+        2. Nawigacja do sekcji "Sklep" i wybranie oferty z kremami
+        3. Wybranie konkretnego kremu spośród dostępnych opcji
+        4. Dodanie wybranego kremu do koszyka zakupowego
+        5. Przejście do koszyka w celu sprawdzenia wartości koszyka
+
+        Oczekiwany rezultat:
+        - Upewnienie się, że dodany produkt ma oczekiwaną wartość w koszyku, np. cena wynosi "46,99 zł".
+
+
+
+2. TEST "test_title" = Sprawdzenie tytułu strony głównej
+        Dane wejściowe:
+        - Otwarcie przeglądarki internetowej
+
+        Kroki:
+        1. Otwarcie strony internetowej Treenuts.pl
+        2. Pobranie tytułu strony
+
+        Oczekiwany rezultat:
+        - Upewnienie się, że tytuł strony jest zgodny z oczekiwanym tekstem "Tree Nuts – Orzechy laskowe z polskich sadów".

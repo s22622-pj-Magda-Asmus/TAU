@@ -1,0 +1,14 @@
+PLIK testowy wykonuje jeden niezalezny testy :
+Zalogowanie i przekierowanie pod odpowiedni url
+
+        Dane wejściowe:
+        - Otwarcie przeglądarki internetowej
+
+        Kroki:
+        1. Przejście na stronę 'https://www.saucedemo.com/'.
+        2. Wprowadzenie nazwy użytkownika ("standard_user") i hasła ("secret_sauce") w odpowiednie pola.
+        3. Kliknięcie przycisku logowania.
+        4. Sprawdzenie poprawności adresu URL - powinien być 'https://www.saucedemo.com/inventory.html'.
+
+        Oczekiwany rezultat:
+        - Upewnienie się, że url strony jest zgodny z oczekiwanym 'https://www.saucedemo.com/inventory.html'

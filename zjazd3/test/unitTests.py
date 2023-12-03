@@ -1,6 +1,6 @@
 import unittest
 
-from ZAJ1.src.Main import *
+from zjazd3.src.Main import *
 
 
 class TestForCalculator(unittest.TestCase):

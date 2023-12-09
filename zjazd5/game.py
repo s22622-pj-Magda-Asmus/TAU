@@ -31,7 +31,7 @@ def print_board(board):
     for row in board:
         print(' '.join(row))
 
-def move_player(board, direction, current_row, current_col):
+def move_player(board, direction, current_row, current_col, start_row, start_col):
     new_row, new_col = current_row, current_col
 
     # Aktualizacja pozycji gracza na podstawie wybranej ścieżki
@@ -45,32 +45,42 @@ def move_player(board, direction, current_row, current_col):
         new_col += 1
 
     if board[new_row][new_col] != 'X':  # Sprawdzenie czy ruch jest możliwy (nie ma przeszkody)
-        board[current_row][current_col] = '_'  # Stara pozycja gracza staje się pustym polem
+        if board[new_row][new_col] != 'E':  # Jeśli nowa pozycja nie jest punktem końcowym
+            board[current_row][current_col] = '_'  # Stara pozycja gracza staje się pustym polem
+        else:
+            board[current_row][current_col] = 'E'  # Oznaczenie punktu końcowego na planszy
         board[new_row][new_col] = '#'  # Nowa pozycja gracza oznaczona jako '#'
 
-        return new_row, new_col
+        return new_row, new_col, start_row, start_col
     else:
         print("Nie można tam przejść. Jest przeszkoda!")
-        return current_row, current_col  # Gracz pozostaje w obecnej pozycji
+        return current_row, current_col, start_row, start_col  # Gracz pozostaje w obecnej pozycji
 
-# Generowanie tablicy i wyświetlenie jej oraz punktów startu, końca i przeszkód
-game_board, player_row, player_col, end_row, end_col = generate_board()
-print("Wygenerowana tablica:")
-print_board(game_board)
+def main():
+    # Generowanie tablicy i wyświetlenie jej oraz punktów startu, końca i przeszkód
+    game_board, player_row, player_col, end_row, end_col = generate_board()
 
-# Główna pętla gry
-while True:
-    print("\nAktualna plansza:")
-    print_board(game_board)
-    move = input("Podaj kierunek ruchu (W - góra, S - dół, A - lewo, D - prawo): ").lower()
+    # Zachowanie początkowej pozycji gracza
+    start_row, start_col = player_row, player_col
 
-    if move in ['w', 's', 'a', 'd']:
-        player_row, player_col = move_player(game_board, move, player_row, player_col)
-        if player_row == end_row and player_col == end_col:
-            game_board[player_row][player_col] = '#'  # Oznaczenie punktu końcowego na planszy
-            print("\nAktualna plansza:")
-            print_board(game_board)
-            print("Gratulacje! Dotarłeś do punktu końcowego!")
-            break
-    else:
-        print("Nieprawidłowy kierunek. Podaj poprawny ruch.")
+    # Główna pętla gry
+    while True:
+        print("\nAktualna plansza:")
+        print_board(game_board)
+        move = input("Podaj kierunek ruchu (W - góra, S - dół, A - lewo, D - prawo): ").lower()
+
+        if move in ['w', 's', 'a', 'd']:
+            player_row, player_col, start_row, start_col = move_player(game_board, move, player_row, player_col, start_row, start_col)
+            if player_row == end_row and player_col == end_col:
+                game_board[player_row][player_col] = '#'  # Oznaczenie punktu końcowego na planszy
+                print("\nAktualna plansza:")
+                print_board(game_board)
+                print("Gratulacje! Dotarłeś do punktu końcowego!")
+                break
+            else:
+                game_board[start_row][start_col] = 'S'  # Przywrócenie pozycji startowej na planszy
+        else:
+            print("Nieprawidłowy kierunek. Podaj poprawny ruch.")
+
+if __name__ == "__main__":
+    main()  # Uruchamianie gry
